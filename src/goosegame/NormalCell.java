@@ -5,43 +5,43 @@ public class NormalCell implements Cell {
 	private int index;
 
 	public NormalCell(int i) {
-		
+		this.player = null;
+		this.index = i;
 	}
 	
 	@Override
 	public boolean canBeLeft() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public int getIndex() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.index;
 	}
 
 	@Override
 	public int handleMove(int diceThrow) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.index;
 	}
 
 	@Override
 	public boolean isBusy() {
-		// TODO Auto-generated method stub
-		return false;
+		if (getPlayer() == null) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 	@Override
 	public void welcomePlayer(Player player) {
-		// TODO Auto-generated method stub
-		
+		this.player = player;
 	}
 
 	@Override
 	public Player getPlayer() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.player;
 	}
 
 }
