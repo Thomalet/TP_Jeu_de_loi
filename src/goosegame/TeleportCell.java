@@ -4,9 +4,9 @@ public class TeleportCell extends NormalCell {
 	
 	private int dest;
 	
-	public TeleportCell(int i) {
+	public TeleportCell(int i, int dest) {
 		super(i);
-		// TODO Auto-generated constructor stub
+		this.dest=dest;
 	}
 	
 	@Override

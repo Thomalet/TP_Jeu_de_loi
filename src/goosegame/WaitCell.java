@@ -7,7 +7,6 @@ public class WaitCell extends NormalCell {
 	
 	public WaitCell(int i, int _timeToWait) {
 		super(i);
-		
 		timer=0;
 		timeToWait=_timeToWait;
 	}

@@ -3,6 +3,7 @@ package goosegame;
 public class NormalCell implements Cell {
 	private Player player;
 	private int index;
+	
 
 	public NormalCell(int i) {
 		this.player = null;
@@ -21,6 +22,7 @@ public class NormalCell implements Cell {
 
 	@Override
 	public int handleMove(int diceThrow) {
+		System.out.println("Je suis normal.");
 		return this.index;
 	}
 

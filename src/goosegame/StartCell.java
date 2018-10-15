@@ -6,7 +6,6 @@ public class StartCell implements Cell {
 	public boolean canBeLeft() {
 		return true;
 	}
-
 	@Override
 	public int getIndex() {
 		return 0;

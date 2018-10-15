@@ -9,6 +9,7 @@ public class GooseCell extends NormalCell {
 	
 	@Override
 	public int handleMove(int s) {
+		System.out.println("Je suis un goose.");
 		return -1;
 	}
 
