@@ -1,7 +1,7 @@
 package goosegame;
 
 public abstract class Board {
-	protected int nbOfCells;
+	protected final int nbOfCells;
 	protected Cell[] theCells;
 	
 	public Board(int nbOfCells) {
