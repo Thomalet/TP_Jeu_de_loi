@@ -1,0 +1,14 @@
+
+méthode play :
+    joueur<-premier joueur
+    tant que le jeu n'est pas fini:
+        Si le joueur peut jouer en partant de départ
+            score<-lancer de dé
+            intermédiaire<-calcule cellule(score)
+            arrivée <- intermédiaire.handleMobe(score) + vérif de dépassement
+            Si arrivé \ineg \ensvide:
+                déplacer occupant dans cellule de départ
+            déplacer joueru dans arrivée
+        joueur <- joueur suivant
+
+goosegame

@@ -11,10 +11,10 @@ public abstract class Board {
 	protected abstract void initBoard();
 	
 	public Cell getCell(int numero) {
-		return Cell;
+		return null;
 	}
 	
 	public int getNbOfCells() {
-		return int;
+		return -1;
 	}
 }
