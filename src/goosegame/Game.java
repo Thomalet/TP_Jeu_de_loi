@@ -3,8 +3,8 @@ package goosegame;
 import java.util.List;
 
 public class Game {
-	private List thePlayers;
-	Board board;
+	protected List thePlayers;
+	protected Board board;
 	
 	public Game(Board board) {
 		
