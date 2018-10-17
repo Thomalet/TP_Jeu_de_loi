@@ -7,17 +7,19 @@ public class WaitCell extends NormalCell {
 	
 	public WaitCell(int i, int _timeToWait) {
 		super(i);
-		timer=0;
 		timeToWait=_timeToWait;
 	}
 	
 	@Override
 	public boolean canBeLeft() {
-		return false;
+		timer+=1;
+		return timer>=timeToWait;
 	}
 	
 	@Override
 	public void welcomePlayer(Player p) {
+		super.welcomePlayer(p);
+		timer=0;
 	}
 
 }

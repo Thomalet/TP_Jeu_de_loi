@@ -11,6 +11,6 @@ public class TeleportCell extends NormalCell {
 	
 	@Override
 	public int handleMove(int s) {
-		return -1;
+		return dest;
 	}
 }

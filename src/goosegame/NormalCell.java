@@ -22,18 +22,12 @@ public class NormalCell implements Cell {
 
 	@Override
 	public int handleMove(int diceThrow) {
-		System.out.println("Je suis normal.");
 		return this.index;
 	}
 
 	@Override
 	public boolean isBusy() {
-		if (getPlayer() == null) {
-			return false;
-		}
-		else {
-			return true;
-		}
+		return (getPlayer() != null);
 	}
 
 	@Override
