@@ -18,21 +18,29 @@ public class Game {
 	}
 	
 	private int correctNbreCell(int n)  {
-		if(n>this.board.getNbOfCells()-1) {
-			return 2*(this.board.getNbOfCells() - 1) - n;
+		return n>=this.board.getNbOfCells()? n= 2*(this.board.getNbOfCells() - 1) - n : n;
+	}
+	
+	private boolean allPlayersAreInTraps() {
+		Iterator<Player> iterator = this.thePlayers.iterator();
+		Player player;
+		while(iterator.hasNext()) {
+			player = iterator.next();
+			if(player.getCell().canBeLeft()==true) {
+				return false;
+			}
 		}
-		else {
-			return n;
-		}
-		//return n>=this.board.getNbOfCells()?n-=this.board.getNbOfCells()-n:n;
+		return true;
 	}
 	
 	public void play() {
 		Iterator<Player> iterator = this.thePlayers.iterator();
 		Player player = iterator.next();
 		Boolean continueGame = true;
+		
 		while (continueGame == true) {
 			if (player.getCell().canBeLeft()==true) {
+				
 				System.out.println(player.toString() + " est sur " + player.getCell().getIndex());
 				int score = player.twoDiceThrow();
 				System.out.println(correctNbreCell(player.cell.getIndex() + score));
@@ -42,17 +50,19 @@ public class Game {
 				Cell finalCell = this.board.getCell(correctNbreCell(intermediaire.handleMove(score)));
 				System.out.println("Case final " + finalCell.getIndex());
 				
-				if(finalCell.isBusy()) {
+				if(finalCell.isBusy()==false) {
 					player.getCell().welcomePlayer(null);
 					player.setCell(finalCell);
 					finalCell.welcomePlayer(player);
+					
+					if(player.getCell().getIndex() == (this.board.getNbOfCells() - 1)) {
+						System.out.println(player.toString() + " a gagné !!!");
+						continueGame = false;
+					}
 				}
 				else {
-					//Problème de pointeur, onn arrive pas à intervertir de joueur quand ils sont deux sur une case
 					Cell initialCell = player.getCell();
 					Player playerDeplace = finalCell.getPlayer();
-					
-					
 					
 					initialCell.welcomePlayer(playerDeplace);
 					playerDeplace.setCell(initialCell);
@@ -62,12 +72,13 @@ public class Game {
 				}
 			}
 			
-			if(player.getCell().getIndex() == (this.board.getNbOfCells() - 1)) {
-				System.out.println(player.toString() + " a gagné !!!");
+			//Gérer le problème où tous les participants sont dans des traps:
+			if(allPlayersAreInTraps()) {
+				System.out.println("Tout le monde est dans un piège");
 				continueGame = false;
 			}
-			
-			else if(iterator.hasNext()) {
+
+			if(iterator.hasNext()) {
 				player = iterator.next();
 			}
 			
